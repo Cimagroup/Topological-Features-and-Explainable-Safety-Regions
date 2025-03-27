@@ -12,7 +12,7 @@ from scipy.stats import iqr
 from utilsTopological import *
 from scipy.spatial import distance_matrix
 from tqdm import tqdm
-
+import time 
 CONFIG_FILE = 'configTopological.yaml'
 RESULTS_FILE = 'simulationVictorTopological/dataset.csv'
 
@@ -64,10 +64,22 @@ for i, run in tqdm(exp.runs.items(), desc="Procesando runs"): # in data.items()
     ps=run.poses
     maxd = [float(np.max(distance_matrix(X,X))) for X in ps[:,:,:2]]
     entropies=[]
+
+    start_time_run = time.time()
     for j in range(ps.shape[0]):
+        start_time_j = time.time()
         persistence = ComputePersistenceDiagram(ps,j,0,maxd[j],"rips")
         persistenceL = limitingDiagram(persistence,maxd[j])
         entropies.append(EntropyCalculationFromBarcode(persistenceL))
+        end_time_j = time.time()  # Tiempo de finalización de la instancia j
+        if i == 0 and j == 0:
+            print(f"Persisten entropy calculation time for a specific time step of a simulation: {end_time_j - start_time_j:.4f} seconds")
+    
+    
+    end_time_run = time.time()  # Tiempo de finalización de la simulación completa i
+    if i == 0:
+         print(f"Persisten entropy time series calculation time for a simulation i={i}: {end_time_run - start_time_run:.4f} second")
+
     entropies = np.array(entropies)
     meanEntropy.append(entropies.mean())
     medianEntropy.append(np.median(entropies))
