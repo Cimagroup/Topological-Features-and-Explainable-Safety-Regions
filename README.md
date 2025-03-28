@@ -18,7 +18,7 @@ The paper deals with simulated social robotics navigation problem that involves 
 
 1) Clone this repository and create a virtual enviromment (It requires Python>=3.10, and it has been developed specifically with Python3.10.11):
 ```bash
-virtualenv -p python3.10 env
+virtualenv -p python3.10 env # you need to have install virtualenv in python: pip install virtualenv
 ```
 
 Next, activate the virtual environment 
@@ -26,20 +26,22 @@ Next, activate the virtual environment
 env\Scripts\activate
 ```
 
-2) Install the necessary dependencies: (first install navground and then the rest of the dependencies)
+2) Install the necessary dependencies: (first install navground and then the rest of the dependencies).
 
 ```bash
 pip install navground[all]
 ```
 
 ```bash
-pip install pandas==2.2.3 seaborn==0.13.2 scikit-learn==1.3.0 skope-rules==1.0.1 numpy==1.25.1 qpsolvers[open_source_solvers] cvxopt anchor-exp gudhi
+pip install pandas==2.2.3 seaborn==0.13.2 scikit-learn==1.3.0 skope-rules==1.0.1 numpy==1.25.1 qpsolvers[open_source_solvers]==2.2.0 cvxopt==1.3.2 anchor-exp==0.0.2.0 gudhi==3.11.0
 ```
 
 In the case of us, as we use python and virtual environments on Visual Studio Code, we need to install ipykernel dependency:
 ```bash
 pip install ipykernel
 ```
+
+You can see the full list of dependencies install and its versions once you have installed these dependencies in the `requeriments.txt`
 
 3) **Simulation and dataset collection (including simulations and topological features)**: run the `getdataset_TopologicalFeatures.py` script with the YAML settings contained in `configTopological.yaml` file. Dataset used in further experiments.
 
