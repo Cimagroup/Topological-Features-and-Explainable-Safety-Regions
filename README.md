@@ -6,6 +6,8 @@ The paper deals with simulated social robotics navigation problem that involves 
 
 # Repository structure
 
+- ExpBehaviorCollision: Experiments for avoid collisions, using safety regions and behavior features.
+
 - ExpTopologicalCollision: Experiments for avoid collisions, using safety regions and topological features.
 
 - ExpTopologicalDeadlock: Experiments for avoid deadlocks, using safety regions and topological features.
@@ -34,6 +36,11 @@ pip install navground[all]
 pip install pandas==2.2.3 seaborn==0.13.2 scikit-learn==1.3.0 skope-rules==1.0.1 numpy==1.25.1 qpsolvers[open_source_solvers] cvxopt anchor-exp gudhi
 ```
 
+In the case of us, as we use python and virtual environments on Visual Studio Code, we need to install ipykernel dependency:
+```bash
+pip install ipykernel
+```
+
 3) **Simulation and dataset collection (including simulations and topological features)**: run the `getdataset_TopologicalFeatures.py` script with the YAML settings contained in `configTopological.yaml` file. Dataset used in further experiments.
 
 4) **Native rule generation**: run `SkopeRules.ipynb` for training skope-rules model, and `NativeXAI_performance.ipynb` for its evaluation.
@@ -44,7 +51,7 @@ pip install pandas==2.2.3 seaborn==0.13.2 scikit-learn==1.3.0 skope-rules==1.0.1
 
 # Citation and reference
 
-If you want to use our code or data for your experiments, please cite our paper.
+If you want to use our code or data for your experiments, please cite our paper. Once the paper is published, we will update that file with the official citacion.
 
 For further information, please contact us at: vtoscano@us.es, sara.narteni@cnr.it
 
